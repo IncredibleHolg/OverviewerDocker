@@ -1,4 +1,4 @@
 #!/bin/bash
-docker build --rm -t \
-  -e https_proxy -e http_proxy
-  overviewer:build .
+docker build --rm  \
+  --build-arg https_proxy --build-arg http_proxy \
+  -t overviewer:build .
