@@ -1,4 +1,5 @@
-FROM  ubuntu:18.04
+ARG BASEIMAGE=ubuntu:18.04
+FROM  ${BASEIMAGE}
 
 RUN apt-get -y update
 RUN apt-get -y install git wget curl
