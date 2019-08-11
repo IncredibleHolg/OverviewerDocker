@@ -20,7 +20,10 @@ COPY --from=compiler /etc/passwd /etc/passwd
 COPY --from=compiler /etc/group /etc/group
 COPY --chown=overviewer:overviewer --from=compiler /MOV /MOV
 ENV PATH=/MOV:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-RUN mkdir /WRK && chown overviewer /WRK
+RUN mkdir /WRK && chown overviewer:overviewer /WRK
 COPY --chown=overviewer:overviewer rendertest19.tgz resourcepack.tgz /WRK/
 USER overviewer
+COPY rendertest.py rendertest.sh /WRK/
+RUN cd /WRK &&  tar -zxvf resourcepack.tgz  -C /WRK/ && tar -zxvf rendertest19.tgz -C /WRK/ &&\
+    rm -f rendertest19.tgz resourcepack.tgz
 WORKDIR /WRK
