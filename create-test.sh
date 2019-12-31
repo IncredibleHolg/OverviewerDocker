@@ -1,3 +1,4 @@
 #!/bin/bash
+source values.sh
 docker build --rm \
-  -t mc-overview-test -f Testimage.Dockerfile .
+  --build-arg RELEASE -t mc-overview-test -f Testimage.Dockerfile .

@@ -1,5 +1,6 @@
-ARG COMPILEIMAGE=docker.io/incredibleholg/mc-overview
-ARG RUNIMAGE=docker.io/incredibleholg/mc-overview-run
+ARG RELEASE=19.10
+ARG COMPILEIMAGE=docker.io/incredibleholg/mc-overview:${RELEASE}
+ARG RUNIMAGE=docker.io/incredibleholg/mc-overview-run:${RELEASE}
 
 FROM ${COMPILEIMAGE}  AS compiler
 

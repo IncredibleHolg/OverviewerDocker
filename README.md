@@ -44,7 +44,7 @@ Assume $WORLDSAVES is the path to the folder, containing your rendertest19 folde
 ```bash
 docker run  -v $WORLDSAVES/rendertest19:/WRK/rendertest19  \
   -v $PWD/test-map:/WRK/test-map  --rm -ti mc-overview-test:latest \
-  ./rendertest.s
+  ./rendertest.sh
 ```
 
 The script ``rendertest.sh`` only starts the overviewer with matching parameters.
@@ -55,4 +55,16 @@ OVDIR=/MOV
 branch=master
 OVERVIEWER=${OVDIR}/overviewer.py
 python3  $OVERVIEWER  -c rendertest.py 
+```
+
+## Other Ubuntu releases
+
+* to use another  Ubuntu release, use e.g ``export RELEASE=18.04``
+
+Then rebuild the Images:
+
+```bash
+bash create-buildimage.sh
+bash create-docker-run.sh
+bash create-test.sh
 ```
