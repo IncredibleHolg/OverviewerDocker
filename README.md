@@ -2,6 +2,20 @@
 
 Docker Images for handling minecraft overviewer
 
+## Images
+
+* Ubuntu Build Image ``incredibleholg/mc-overview``
+  * 18.04: Ubuntu 18.04 based
+  * 19.10: Ubuntu 19.10 based (latest)
+
+Environment to compile from GIT sources.
+
+* Ubuntu Run Image ``incredibleholg/mc-overview-run``
+  * 18.04: Ubuntu 18.04 based
+  * 19.10: Ubuntu 19.10 based (latest)
+
+Environment to run already compiled Overviewer.
+
 ## Building
 
 ### Build image
@@ -14,7 +28,7 @@ bash create-buildimage.sh
 
 The Image will be stored as ``mc-overview``
 
-### Execude image
+### Run image
 
 Use the following command to create the image needed to run the source, if it is allready compiled in a
 mountable folder.
