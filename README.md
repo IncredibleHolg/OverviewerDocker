@@ -16,7 +16,7 @@ The Image will be stored as ``mc-overview``
 
 ### Execude image
 
-Use the following command to create the image needed to run the source, if it is allready compilrd in a
+Use the following command to create the image needed to run the source, if it is allready compiled in a
 mountable folder.
 
 ```bash
@@ -27,7 +27,7 @@ The Image will be stored as ``mc-overview-run``
 
 ## Example
 
-To start a build test imege, use:
+To start a build test image, use:
 
 ```bash
 bash create-test.sh
@@ -38,7 +38,7 @@ mkdir test-map && chmod  0777 test-map/ && chmod  o+t test-map/
 docker run  -v $PWD/test-map:/WRK/test-map  --rm -ti mc-overview-test:latest ./rendertest.sh
 ```
 
-Use own worldsave, remember to enable read access to the files.
+Use your own worldsave, remember to enable read access to the files.
 Assume $WORLDSAVES is the path to the folder, containing your rendertest19 folder.
 
 ```bash
@@ -47,3 +47,12 @@ docker run  -v $WORLDSAVES/rendertest19:/WRK/rendertest19  \
   ./rendertest.s
 ```
 
+The script ``rendertest.sh`` only starts the overviewer with matching parameters.
+
+```bash
+#!/bin/bash
+OVDIR=/MOV
+branch=master
+OVERVIEWER=${OVDIR}/overviewer.py
+python3  $OVERVIEWER  -c rendertest.py 
+```
