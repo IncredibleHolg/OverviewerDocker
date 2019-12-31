@@ -1,4 +1,4 @@
-ARG BASEIMAGE=docker.io/ubuntu:18.04
+ARG BASEIMAGE=docker.io/ubuntu:19.10
 FROM  ${BASEIMAGE}
 
 RUN apt-get -y update

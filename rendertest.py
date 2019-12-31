@@ -5,7 +5,7 @@
 # the world name on the map interface. If you change it, be sure to also change
 # the referenced world names in the render definitions below.
 worlds['Testworld'] = "/WRK/rendertest19/"
-texturepath = "/WRK/original1.14"
+texturepath = "/WRK/original1.15"
 #texturepath = "/home/hdunkel/WRK/Minecraft/diverses/new-vanilla-default.zip"
 
 # Define where to put the output here.
