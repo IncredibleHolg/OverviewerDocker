@@ -1,5 +1,6 @@
 #!/bin/bash
-source values.sh
+source bin/values.sh
+cd Docker
 docker build --rm  \
   -t mc-overview:${RELEASE} \
   --build-arg RELEASE -f build.Dockerfile  .

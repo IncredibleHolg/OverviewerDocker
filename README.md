@@ -23,7 +23,7 @@ Environment to run already compiled Overviewer.
 Use the following command to create the image needed to compile the GIT source.
 
 ```bash
-bash create-buildimage.sh 
+bash create-buildimage.sh
 ```
 
 The Image will be stored as ``mc-overview``
@@ -68,7 +68,7 @@ The script ``rendertest.sh`` only starts the overviewer with matching parameters
 OVDIR=/MOV
 branch=master
 OVERVIEWER=${OVDIR}/overviewer.py
-python3  $OVERVIEWER  -c rendertest.py 
+python3  $OVERVIEWER  -c rendertest.py
 ```
 
 ## Other Ubuntu releases

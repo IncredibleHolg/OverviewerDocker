@@ -25,6 +25,6 @@ RUN mkdir /WRK && chown overviewer:overviewer /WRK
 COPY --chown=overviewer:overviewer rendertest19.tgz resourcepack.tgz /WRK/
 USER overviewer
 COPY rendertest.py rendertest.sh /WRK/
-RUN cd /WRK &&  tar -zxvf resourcepack.tgz  -C /WRK/ && tar -zxvf rendertest19.tgz -C /WRK/ &&\
+RUN cd /WRK &&  tar -zxf resourcepack.tgz  -C /WRK/ && tar -zxf rendertest19.tgz -C /WRK/ &&\
     rm -f rendertest19.tgz resourcepack.tgz
 WORKDIR /WRK
