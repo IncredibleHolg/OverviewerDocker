@@ -21,6 +21,9 @@ The image ``mc-overview-test`` contains the [Minecraft-Overviewer project](https
 To render the world, a resourcepack is needed. This can be extracted from the ``minecraft.jar`` file or added
 directly. **This resourcepack is not part of this project**.
 
+The testworld ``testworld.tgz`` is stored using LFS, to get this downloaded, setup git to use ``LFS``.
+See [Git Large File Storage](https://git-lfs.github.com/) on how to do this.
+
 The ``create-test.sh`` script tries to locate a resourcepack on the system it is running on.
 
 * If an archive ``resources/resourcepack.tgz`` is found, this one is used.

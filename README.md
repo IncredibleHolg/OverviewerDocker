@@ -27,13 +27,17 @@ including all the needed compiler components.
 
 This Image contains only the needed Python components. If you have a working directory with a
 compiled  ``Minecraft-Overviewer`` environment, you can use this container for the map generation.
-Use the Docker option ``` -v $LOCALDIR:/MOV``` to map your working directory into the docker container.
+Use the Docker option ```-v \$PWD:/MOV``` to map your working directory into the docker container.
 Check [README-developers.md] on how to use this image.
 
-### Building the images
+### Getting Started
 
 Check the prerequisites in [README-developers.md](README-developers.md). You will need a recent texturepack
 and probably a Minecraft testworld to render.
+
+Setup git to use ``LFS``. See [Git Large File Storage](https://git-lfs.github.com/) on how to do this.
+
+Then clone this project to create your workspace.
 
 Use the following command to create all the needed images (this will fail, unless the prerequisites are met).
 
