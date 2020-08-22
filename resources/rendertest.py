@@ -4,7 +4,7 @@
 # Define the path to your world here. 'My World' in this case will show up as
 # the world name on the map interface. If you change it, be sure to also change
 # the referenced world names in the render definitions below.
-worlds['Testworld'] = "/WRK/rendertest19/"
+worlds['Testworld'] = "/WRK/testworld/"
 texturepath = "/WRK/resourcepack"
 #texturepath = "/home/hdunkel/WRK/Minecraft/diverses/new-vanilla-default.zip"
 
