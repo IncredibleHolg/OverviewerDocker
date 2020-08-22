@@ -11,7 +11,7 @@ Here are some examples, where this may be usefull.
 
 ## Images
 
-After [building the images](#building-the-images),  three different images are available.
+After [building the images](#getting-started),  three different images are available.
 
 ### mc-overview-test
 
