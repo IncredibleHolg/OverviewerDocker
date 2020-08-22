@@ -1,84 +1,73 @@
 # OverviewerDocker
 
-Docker Images for handling minecraft overviewer
+This project generates Docker images intended to provide a working environment
+for the [Minecraft-Overviewer project](https://github.com/overviewer/Minecraft-Overviewer)
+
+Here are some examples, where this may be usefull.
+
+* Test building the project on a clean environment (you may have incompatible Python modules installed)
+* Build on differen Linux distributions (The images are build on Ubuntu).
+* Have different, compiled versions of ``Minecraft-Overviewer`` available.
 
 ## Images
 
-* Ubuntu Build Image ``incredibleholg/mc-overview``
-  * 18.04: Ubuntu 18.04 based
-  * 19.10: Ubuntu 19.10 based (latest)
+After [building the images](#building-the-images),  three different images are available.
 
-Environment to compile from GIT sources.
+### mc-overview-test
 
-* Ubuntu Run Image ``incredibleholg/mc-overview-run``
-  * 18.04: Ubuntu 18.04 based
-  * 19.10: Ubuntu 19.10 based (latest)
+This image contains The python runtime environment, a compiled ``master`` branch of ``Minecraft-Overviewer``
+and all components to start rendering by starting ``rendertest.sh``. Check [README-developers.md](README-developers.md) for the prerequisites to build and customize this image.
 
-Environment to run already compiled Overviewer.
+### mc-overview
 
-## Building
+This Image contains all the tools to build a functional ``Minecraft-Overviewer`` environment,
+including all the needed compiler components.
 
-### Build image
+### mc-overview-run
 
-Use the following command to create the image needed to compile the GIT source.
+This Image contains only the needed Python components. If you have a working directory with a
+compiled  ``Minecraft-Overviewer`` environment, you can use this container for the map generation.
+Use the Docker option ```-v \$PWD:/MOV``` to map your working directory into the docker container.
+Check [README-developers.md] on how to use this image.
 
-```bash
-bash create-buildimage.sh 
-```
+### Getting Started
 
-The Image will be stored as ``mc-overview``
+Check the prerequisites in [README-developers.md](README-developers.md). You will need a recent texturepack
+and probably a Minecraft testworld to render.
 
-### Run image
+Setup git to use ``LFS``. See [Git Large File Storage](https://git-lfs.github.com/) on how to do this.
 
-Use the following command to create the image needed to run the source, if it is allready compiled in a
-mountable folder.
+Then clone this project to create your workspace.
 
-```bash
-bash  create-docker-run.sh
-```
-
-The Image will be stored as ``mc-overview-run``
-
-## Example
-
-To start a build test image, use:
+Use the following command to create all the needed images (this will fail, unless the prerequisites are met).
 
 ```bash
-bash create-test.sh
+bash bin/build-all.sh
 ```
+
+The testing image will be generated as ``mc-overview-test``
+
+### Run the test image
+
+Use this command, to render the testworld, included in the ``mc-overview-test`` image, using
+the selected ``Minecraft-Overviewer`` branch.
 
 ```bash
-mkdir test-map && chmod  0777 test-map/ && chmod  o+t test-map/
-docker run  -v $PWD/test-map:/WRK/test-map  --rm -ti mc-overview-test:latest ./rendertest.sh
+docker run  -ti --rm mc-overview-test ./rendertest.sh
 ```
 
-Use your own worldsave, remember to enable read access to the files.
-Assume $WORLDSAVES is the path to the folder, containing your rendertest19 folder.
+The map will be placed inside the container and deleted together with the container after the execution is finished. To keep your map, use the docker volume mappping to place a local folder into your environment.
 
 ```bash
-docker run  -v $WORLDSAVES/rendertest19:/WRK/rendertest19  \
-  -v $PWD/test-map:/WRK/test-map  --rm -ti mc-overview-test:latest \
-  ./rendertest.sh
+mkdir test-map
+chmod 0777 test-map
+docker run  -ti --rm -v $PWD/test-map:/WRK/test-map mc-overview-test ./rendertest.sh
 ```
 
-The script ``rendertest.sh`` only starts the overviewer with matching parameters.
+The processes inside the container are execudet as ``overviewer`` with ``UID=10001``.
+To get proper access rights, the test-map folder is set to ```0777```.
 
-```bash
-#!/bin/bash
-OVDIR=/MOV
-branch=master
-OVERVIEWER=${OVDIR}/overviewer.py
-python3  $OVERVIEWER  -c rendertest.py 
-```
+### Other uses
 
-## Other Ubuntu releases
-
-* to use another  Ubuntu release, use e.g ``export RELEASE=18.04``
-
-Then rebuild the Images:
-
-```bash
-bash create-buildimage.sh
-bash create-docker-run.sh
-bash create-test.sh
-```
+The other to images are tools for experiment and testing. Usage examples  can be found in the
+[README-developers.md](README-developers.md) document.
